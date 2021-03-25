@@ -75,6 +75,14 @@ def process_results():
                             subj = [("CID" + str(level)), subj[0]]
                             #("CID IS ", subj[0])
                     all_subjs.append(subj)
+
+            for subj in all_subjs:
+                subj.append(random.randint(30, 100))
+
+
+            return render_template('score.html', 
+                            all_subjs=all_subjs, 
+                            level=level)
             #print("year 1/2")
             ## Sec 1/2 only compul subjs
         elif level in "34":
@@ -93,10 +101,19 @@ def process_results():
                 elif subj[1] in sci_subjs or subj[1] in hums_subjs:
                     all_subjs.append(subj)
 
+            for subj in all_subjs:
+                subj.append(random.randint(30, 100))
+
+
+            return render_template('score.html', 
+                            all_subjs=all_subjs, 
+                            level=level,
+                            sci_subjs=sci_subjs,
+                            hums_subjs=hums_subjs)
+
         #("beforenumbers added: ", all_subjs)
 
-        for subj in all_subjs:
-            subj.append(random.randint(30, 100))
+        
             #print(subj)
 
         #print("afternumbers added: ", all_subjs)
