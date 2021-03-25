@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <title>Optional Objects</title>
+    <link rel="stylesheet" href="../static/style_gpa.css">
+</head>
+<body>
+    <form action="{{ url_for('process_results') }}">
+        <input type="text" name="level" value="{{level}}" hidden></input>
+    <h1>Subject Selection</h1>
+    <p>Please Select the subjects you are taking.</p>
+    <p class="info">Here are the compulsory subjects for Secondary {{level}}:</p>
+    <section>
+        <ul>
+            {% for subj in compul_subjs %}
+            <li>{{subj[0]}}</li>
+            {% endfor %}
+        </ul>
+    </section>
+    <p class="info_small">Please select your Science Subjects:</p>
+    <section>
+        <ul>
+            {% for subj in opt_sci_subjs %}
+                <input type='checkbox' name="opt_sci_subj" id="{{subj[1]}}" value="{{subj[1]}}"><label for="{{subj[1]}}">{{subj[0]}}</label>
+                <br>
+            {% endfor %}
+        </ul>
+    </section>
+    <p class="info_small">Please select your Humanities Subjects:</p>
+    <section>
+        <ul>
+            {% for subj in opt_hums_subjs %}
+                <input type='checkbox' name="opt_hums_subj" id="{{subj[1]}}" value="{{subj[1]}}"><label for="{{subj[1]}}">{{subj[0]}}</label>
+                <br>
+            {% endfor %}
+        </ul>
+    </section>
+    <table class="submit">
+        <tr>
+            <td width=50%><a href="{{ url_for('index') }}">Back</a></td>
+            <td><button type="submit" class="right">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

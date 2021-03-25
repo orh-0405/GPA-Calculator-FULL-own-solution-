@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your GPA</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style_gpa.css')}}">
+</head>
+<body>
+    <h1>Your GPA</h1>
+    <table border="solid" width=45% class="result">
+        <tr>
+            <th>Subject</th>
+            <th>Score</th>
+            <th>Grade</th>
+            <th>GPA</th>
+        </tr>
+        {% for subj in grade_and_subj %}
+        <tr>
+            <td class="{{subj[-1]}}" width="55%">{{subj[2]}}</td>
+            <td class="{{subj[-1]}}" width=15%>{{subj[0]}}</td>
+            <td class="{{subj[-1]}}" width=15%>{{subj[1]}}</td>
+            <td class="{{subj[-1]}}" width=15%>{{subj[3]}}</td>
+        </tr>
+        {%endfor%}
+        <tr>
+            <td><b>Total</b></td>
+            <td></td>
+            <td></td>
+            <td><b>{{gpa}}</b></td>
+        </tr>
+    </table>
+
+    <p>
+        {% if year4%}
+    <table border="solid" width=38.5% class="legends">
+        <tr>
+            <th width=64%>Legend</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Counted in calculation</td>
+            <td class="counted"></td>
+        </tr>
+        <tr>
+            <td>Double Count (Math Only)</td>
+            <td class="double"></td>
+        </tr>
+    </table>
+    {%endif%}
+    </p>
+
+    <form action="{{ url_for('index') }}">
+    <table class="submit">
+        <tr>
+            <td width=50%><a href="{{ url_for('process_results', level=level, all_subjs=user_subjs, sci_subjs=sci_subjs, hums_subjs=hums_subjs) }}">Back</a></td>
+            <td width=50%><button class="right" href="{{ url_for('index') }}">Restart</button></td>
+        </tr>
+    </table>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style_gpa.css')}}">
+</head>
+<body>
+    <h1>GPA Calculator</h1>
+    <p>Welcome to the GPA Calculator.</p>
+    <p>Please enter your academic level:</p>
+    <table class="index">
+        <tr>
+            <td width=50%>
+                <form action="{{ url_for('opt_subjs') }}">
+                    <select name="year">
+                        <option value="1">Secondary 1</option>
+                        <option value="2">Secondary 2</option>
+                        <option value="3">Secondary 3</option>
+                        <option value="4">Secondary 4</option>
+                    </select>
+            </td>
+            <td><button type="submit" value="Submit" class="right">Submit</button></td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>
