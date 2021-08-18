@@ -83,11 +83,9 @@ def process_results():
             return render_template('score.html', 
                             all_subjs=all_subjs, 
                             level=level)
-            #print("year 1/2")
-            ## Sec 1/2 only compul subjs
-        elif level in "34":
-            ## Sec3/4 read opt subjs
-            #print(request.args)
+    else:
+        #go to enter result page (private)
+        if level in "34":
             sci_subjs = request.args.getlist("opt_sci_subj")
             hums_subjs = request.args.getlist("opt_hums_subj")
             #print(sci_subjs, hums_subjs)
@@ -110,21 +108,6 @@ def process_results():
                             level=level,
                             sci_subjs=sci_subjs,
                             hums_subjs=hums_subjs)
-
-        #("beforenumbers added: ", all_subjs)
-
-        
-            #print(subj)
-
-        #print("afternumbers added: ", all_subjs)
-        return render_template('score.html', 
-                            all_subjs=all_subjs, 
-                            level=level,
-                            sci_subjs=sci_subjs,
-                            hums_subjs=hums_subjs)
-    else:
-        #go to enter result page (private)
-        pass
 
 @app.route('/result/')#, methods=["POST"])
 def result():
